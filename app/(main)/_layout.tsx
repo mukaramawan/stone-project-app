@@ -61,6 +61,20 @@ const MainLayout = () => {
             tabBarStyle: { display: "none" },
           }}
         />
+        <Tabs.Screen
+          name="Blog"
+          options={{
+            href: null,
+            tabBarStyle: { display: "none" },
+          }}
+        />
+        <Tabs.Screen
+          name="BlogInner"
+          options={{
+            href: null,
+            tabBarStyle: { display: "none" },
+          }}
+        />
       </Tabs>
     </ImageBackground>
   );

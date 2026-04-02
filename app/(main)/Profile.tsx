@@ -37,6 +37,7 @@ const Profile = () => {
       key: "blog",
       label: "Blog",
       icon: "newspaper",
+      onPress: () => router.push("/Blog"),
     },
     {
       key: "password",
