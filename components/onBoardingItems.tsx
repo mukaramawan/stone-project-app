@@ -1,18 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-  Dimensions,
   Image,
   ImageBackground,
   Pressable,
+  StyleProp,
   StyleSheet,
   Text,
   View,
+  ViewStyle,
 } from "react-native";
 // import { SvgUri } from "react-native-svg";
-import { colors } from "../constants/theme";
-
-const { width } = Dimensions.get("window");
+import { colors, gradients } from "../constants/theme";
 
 type OnboardingPage = {
   SupTitle?: string;
@@ -53,8 +53,10 @@ const OnboardingItem = ({
 
   return (
     <ImageBackground
-      source={require("../assets/images/background.png")}
+      source={require("../assets/images/background2.png")}
       style={[styles.container, containerStyles]}
+      resizeMode="cover"
+      imageStyle={styles.backgroundImage}
     >
       <View style={styles.heroArea}>
         <Image
@@ -81,8 +83,12 @@ const OnboardingItem = ({
       <View style={styles.footer}>
         <View style={styles.pagination}>
           {pages.map((page: OnboardingPage, index: number) => (
-            <View
+            <LinearGradient
               key={`${page.title}-${index}`}
+              colors={gradients.accent.colors}
+              locations={gradients.accent.locations}
+              start={gradients.accent.start}
+              end={gradients.accent.end}
               style={[
                 styles.dot,
                 index === currentIndex ? styles.dotActive : styles.dotInactive,
@@ -91,8 +97,27 @@ const OnboardingItem = ({
           ))}
         </View>
 
-        <Pressable style={styles.nextButton} onPress={handlePrimaryAction}>
-          <Ionicons name="chevron-forward" size={34} color={colors.white} />
+        <Pressable
+          style={styles.nextButtonPressable}
+          onPress={handlePrimaryAction}
+        >
+          <LinearGradient
+            colors={gradients.accentReversed.colors}
+            locations={gradients.accentReversed.locations}
+            start={gradients.accentReversed.start}
+            end={gradients.accentReversed.end}
+            style={styles.nextButtonOutline}
+          >
+            <LinearGradient
+              colors={gradients.accent.colors}
+              locations={gradients.accent.locations}
+              start={gradients.accent.start}
+              end={gradients.accent.end}
+              style={styles.nextButtonGradient}
+            >
+              <Ionicons name="chevron-forward" size={34} color={colors.white} />
+            </LinearGradient>
+          </LinearGradient>
         </Pressable>
       </View>
     </ImageBackground>
@@ -104,10 +129,13 @@ export default OnboardingItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
-    paddingTop: 12,
-    paddingBottom: 20,
+    backgroundColor: "#2C2429",
+    paddingTop: 20,
+    paddingBottom: 40,
     justifyContent: "space-between",
+  },
+  backgroundImage: {
+    opacity: 1,
   },
   heroArea: {
     flex: 1,
@@ -116,10 +144,8 @@ const styles = StyleSheet.create({
     paddingTop: 18,
   },
   heroImage: {
-    width: width * 0.8,
-    height: width * 0.8,
-    maxWidth: 330,
-    maxHeight: 330,
+    width: "100%",
+    height: "75%",
   },
   copyArea: {
     paddingTop: 16,
@@ -162,21 +188,25 @@ const styles = StyleSheet.create({
   },
   dotActive: {
     width: 18,
-    backgroundColor: colors.primary,
   },
   dotInactive: {
     width: 8,
-    backgroundColor: colors.primaryLight,
+    opacity: 0.55,
   },
-  nextButton: {
+  nextButtonPressable: {
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: colors.primary,
+  },
+  nextButtonOutline: {
+    flex: 1,
+    borderRadius: 36,
+    padding: 2,
+  },
+  nextButtonGradient: {
+    flex: 1,
+    borderRadius: 34,
     alignItems: "center",
     justifyContent: "center",
   },
 });
-function useFonts(arg0: { Jura_700Bold: any }): [any] {
-  throw new Error("Function not implemented.");
-}

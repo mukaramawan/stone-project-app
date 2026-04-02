@@ -1,20 +1,19 @@
 import { useRouter } from "expo-router";
 import React from "react";
-import { Image as RNImage, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import OnboardingItem from "../components/onBoardingItems";
-import { colors } from "../constants/theme";
 import { setItems } from "../utils/asyncStorage";
 
-const logoUri = RNImage.resolveAssetSource(
-  require("../assets/images/onboarding3.svg"),
-).uri;
+// const logoUri = RNImage.resolveAssetSource(
+//   require("../assets/images/onboarding3.svg"),
+// ).uri;
 
 const OnBoardingScreen = () => {
   const router = useRouter();
 
   const handleDone = async () => {
     await setItems("onBoarded", "true");
-    router.replace("/Home");
+    router.replace("/Login");
   };
 
   return (
@@ -54,7 +53,7 @@ export default OnBoardingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    // backgroundColor: "#2C2429",
   },
   onboardingContainer: {
     paddingHorizontal: 18,

@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import React from "react";
-import { StyleSheet } from "react-native";
+
 const _layout = () => {
   const [fontsLoaded] = useFonts({
     Jura: require("../assets/fonts/Jura-VariableFont_wght.ttf"),
@@ -10,9 +10,11 @@ const _layout = () => {
     PoppinsExtraLight: require("../assets/fonts/Poppins-ExtraLight.ttf"),
   });
 
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return <Stack screenOptions={{ headerShown: false }} />;
 };
 
 export default _layout;
-
-const styles = StyleSheet.create({});

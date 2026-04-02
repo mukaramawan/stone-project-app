@@ -25,8 +25,8 @@ const index = () => {
       const onBoarded = await getItems("onBoarded");
 
       const timeoutId = setTimeout(() => {
-        router.replace(onBoarded === "true" ? "/Home" : "/onBoarding");
-      }, 2000);
+        router.replace(onBoarded === "true" ? "/Login" : "/onBoarding");
+      }, 3000);
     };
 
     checkOnBoardingStatus();

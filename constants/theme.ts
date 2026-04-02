@@ -26,6 +26,33 @@ export const colors = {
   neutral900: "#272727", // Dark card background
 };
 
+export const gradients = {
+  accent: {
+    colors: ["#854732", "#BF8F7E"] as const,
+    locations: [0, 0.894] as const,
+    start: { x: 0.5, y: 0 },
+    end: { x: 0.5, y: 1 },
+  },
+  accentReversed: {
+    colors: ["#BF8F7E", "#854732"] as const,
+    locations: [0, 0.894] as const,
+    start: { x: 0.5, y: 0 },
+    end: { x: 0.5, y: 1 },
+  },
+  accentRich: {
+    colors: ["#854732", "#B3735C", "#BF8F7E"] as const,
+    locations: [0, 0.565, 1] as const,
+    start: { x: 0.5, y: 0 },
+    end: { x: 0.5, y: 1 },
+  },
+  dark: {
+    colors: ["#353535", "#1D1D1D"] as const,
+    locations: [0, 0.894] as const,
+    start: { x: 0.5, y: 0 },
+    end: { x: 0.5, y: 1 },
+  },
+};
+
 export const spacingX = {
   _3: scale(3),
   _5: scale(5),
