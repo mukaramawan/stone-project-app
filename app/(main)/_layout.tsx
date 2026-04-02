@@ -47,7 +47,20 @@ const MainLayout = () => {
         <Tabs.Screen name="Home" options={{ title: "Home" }} />
         <Tabs.Screen name="Wishlist" options={{ title: "Wishlist" }} />
         <Tabs.Screen name="Recommended" options={{ title: "Recommended" }} />
-        <Tabs.Screen name="Profile" options={{ title: "Profile" }} />
+        <Tabs.Screen
+          name="Profile"
+          options={{
+            title: "Profile",
+            tabBarStyle: { display: "none" },
+          }}
+        />
+        <Tabs.Screen
+          name="PrivacyPolicy"
+          options={{
+            href: null,
+            tabBarStyle: { display: "none" },
+          }}
+        />
       </Tabs>
     </ImageBackground>
   );
